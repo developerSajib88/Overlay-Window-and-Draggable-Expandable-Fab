@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_expandable_fab: ^2.3.0  
+  flutter_expandable_fab: ^2.3.0
+  floating_draggable_widget: ^2.3.0
 
 
   # The following adds the Cupertino Icons font to your application.
