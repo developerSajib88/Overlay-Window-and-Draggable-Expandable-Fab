@@ -1,6 +1,8 @@
+import 'package:circular_menu/circular_menu.dart';
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:overlay_widget/circular_fab_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,21 +27,10 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
- 
-  final _key = GlobalKey<ExpandableFabState>();
-  
 
   @override
   Widget build(BuildContext context) {
-    return FloatingDraggableWidget(
-      floatingWidgetHeight: 100,
-      floatingWidgetWidth: 100,
-      autoAlign: true,
-      dx: -20,
-      dy: 400,
-      deleteWidget: const Icon(Icons.close),
-      deleteWidgetAlignment: Alignment.center,
-      mainScreenWidget: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
           title: const Text(
@@ -60,61 +51,6 @@ class _MyWidgetState extends State<MyWidget> {
             ),
           ),
         ),
-        floatingActionButtonLocation: ExpandableFab.location,
-      ),
-      
-      floatingWidget: ExpandableFab(
-      //distance: 70,
-      type: ExpandableFabType.fan,
-      pos: ExpandableFabPos.center,
-      openButtonBuilder: RotateFloatingActionButtonBuilder(
-          child: const Icon(
-            Icons.search,
-            color: Colors.white,
-          ),
-          fabSize: ExpandableFabSize.regular,
-          shape: const CircleBorder(),
-          backgroundColor: Colors.blue),
-      
-      closeButtonBuilder: RotateFloatingActionButtonBuilder(
-          child: const Icon(
-            Icons.close_sharp,
-            color: Colors.white,
-          ),
-          fabSize: ExpandableFabSize.regular,
-          shape: const CircleBorder(),
-          backgroundColor: Colors.blue),
-      
-      children: [
-        FloatingActionButton(
-          onPressed: () {},
-          shape: const CircleBorder(),
-          backgroundColor: Colors.green,
-          child: const Icon(
-            Icons.camera_enhance,
-            color: Colors.white,
-          ),
-        ),
-        FloatingActionButton(
-          onPressed: () {},
-          shape: const CircleBorder(),
-          backgroundColor: Colors.red,
-          child: const Icon(
-            Icons.document_scanner,
-            color: Colors.white,
-          ),
-        ),
-        FloatingActionButton(
-          onPressed: () {},
-          shape: const CircleBorder(),
-          backgroundColor: Colors.purple,
-          child: const Icon(
-            Icons.translate_rounded,
-            color: Colors.white,
-          ),
-        ),
-      ],
-            )
-    );
+      );
   }
 }
