@@ -2,8 +2,8 @@ import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_widget/circular_fab_menu.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class DraggableWidget extends StatelessWidget {
+  const DraggableWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

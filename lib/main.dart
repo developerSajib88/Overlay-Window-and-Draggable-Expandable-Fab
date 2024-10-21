@@ -1,12 +1,22 @@
-import 'package:circular_menu/circular_menu.dart';
-import 'package:floating_draggable_widget/floating_draggable_widget.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:overlay_widget/circular_fab_menu.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+
+// overlay entry point
+@pragma("vm:entry-point")
+void overlayMain() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: CircularFabMenu()
+  ));
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,6 +38,16 @@ class MyWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<MyWidget> {
 
+
+  Future<void> showOverlayWindow()async{
+    final bool status = await FlutterOverlayWindow.isPermissionGranted();
+    if(status){
+      await FlutterOverlayWindow.showOverlay();
+    }else{
+      await FlutterOverlayWindow.requestPermission();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +61,7 @@ class _MyWidgetState extends State<MyWidget> {
         ),
         body: Center(
           child: ElevatedButton(
-            onPressed: (){},
+            onPressed: ()=> showOverlayWindow(),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue
             ),
