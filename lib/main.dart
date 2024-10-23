@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:overlay_widget/circular_fab_menu.dart';
+import 'package:overlay_widget/draggable_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +12,29 @@ void main() {
 // overlay entry point
 @pragma("vm:entry-point")
 void overlayMain() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: CircularFabMenu()
+    home: Material(
+      color: Colors.transparent,
+      child: FloatingDraggableWidget(
+        floatingWidgetHeight: 100,
+        floatingWidgetWidth: 100,
+        autoAlign: true,
+        dx: 310,
+        dy: 400,
+        autoAlignType: AlignmentType.onlyRight,
+        deleteWidget: const Icon(
+          Icons.close, 
+          color: Colors.pink
+        ),
+        deleteWidgetAlignment: Alignment.bottomCenter,
+        floatingWidget: const CircularFabMenu(),
+        
+      ),
+    ),
   ));
 }
+
 
 
 class MyApp extends StatelessWidget {

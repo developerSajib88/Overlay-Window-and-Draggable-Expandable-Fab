@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   circular_menu: ^4.0.0  
-  floating_draggable_widget: ^2.3.0
+  #floating_draggable_widget: ^2.3.0
   flutter_overlay_window: ^0.4.5
 
 
