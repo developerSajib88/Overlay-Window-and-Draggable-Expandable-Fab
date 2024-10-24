@@ -93,7 +93,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget> {
         // Background screen (fill the available space)
         GestureDetector(
           onTap: ()async{
-            await FlutterOverlayWindow.closeOverlay();
+            //await FlutterOverlayWindow.closeOverlay();
             // Handle background tap events here
             print("Background tapped!");
           },

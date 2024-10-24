@@ -12,25 +12,11 @@ void main() {
 // overlay entry point
 @pragma("vm:entry-point")
 void overlayMain() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Material(
       color: Colors.transparent,
-      child: FloatingDraggableWidget(
-        floatingWidgetHeight: 100,
-        floatingWidgetWidth: 100,
-        autoAlign: true,
-        dx: 310,
-        dy: 400,
-        autoAlignType: AlignmentType.onlyRight,
-        deleteWidget: const Icon(
-          Icons.close, 
-          color: Colors.pink
-        ),
-        deleteWidgetAlignment: Alignment.bottomCenter,
-        floatingWidget: const CircularFabMenu(),
-        
-      ),
+      child: CircularFabMenu(),
     ),
   ));
 }
@@ -61,12 +47,19 @@ class _MyWidgetState extends State<MyWidget> {
   Future<void> showOverlayWindow()async{
     final bool status = await FlutterOverlayWindow.isPermissionGranted();
     if(status){
-      await FlutterOverlayWindow.showOverlay();
+      await FlutterOverlayWindow.showOverlay(
+        positionGravity: PositionGravity.auto,
+        alignment: OverlayAlignment.centerLeft,
+        flag: OverlayFlag.defaultFlag,
+        enableDrag: true,
+        width: 50,
+        height: 50
+      );
     }else{
       await FlutterOverlayWindow.requestPermission();
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
